@@ -40,8 +40,8 @@ module Speedtest
 
 		def run
 			@a = Mechanize.new
-			@a.open_timeout=1
-			@a.read_timeout=1
+			@a.open_timeout=20
+			@a.read_timeout=20
 			server = pickServer
 			@server_root = server[:url]
 			latency = server[:latency]
@@ -50,6 +50,12 @@ module Speedtest
 			puts "Download: #{pretty_speed downRate}"
 			upRate = upload
 			puts "Upload: #{pretty_speed upRate}"
+			{:server => @server_root, :latency => latency, :downRate => downRate, :upRate => upRate}
+    rescue
+      @server_root ||= "none"
+      latency ||= ""
+      downRate ||= 0
+      upRate ||= 0
 			{:server => @server_root, :latency => latency, :downRate => downRate, :upRate => upRate}
 		end
 
@@ -154,6 +160,7 @@ module Speedtest
 				}}.sort_by { |x| x[:latency] }
 			selected=latency_sorted_servers[0]
 			log "Automatically selected server: #{selected[:url]} - #{selected[:latency]} ms"
+      puts selected
 			selected
 		end
 
