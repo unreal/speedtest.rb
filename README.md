@@ -1,3 +1,6 @@
+speedtest.rb
+============
+
 Simple speedtest.net command line tool in ruby.
 
 Heavily inspired by https://github.com/fopina/pyspeedtest
@@ -17,11 +20,7 @@ Usage:
 
 Interesting links
 ===========
+
 * http://www.phuket-data-wizards.com/blog/2011/09/17/speedtest-vs-dslreports-analysis/
 * https://github.com/fopina/pyspeedtest
 * http://tech.ivkin.net/wiki/Run_Speedtest_from_command_line
-=======
-speedtest.rb
-============
-
-A ruby client for speedtest.net
